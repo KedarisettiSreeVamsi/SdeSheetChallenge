@@ -1,0 +1,45 @@
+The code which I have done:
+Python:
+	d1 = []
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if matrix[i][j] == 0:
+                    d1.append((i,j))
+        print(d1)
+        for i in d1:
+            for j in range(len(matrix[0])):
+                matrix[i[0]][j] = 0
+            for j in range(len(matrix)):
+                matrix[j][i[1]] = 0
+Java:
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        ArrayList<List<Integer>> zeroIndices = new ArrayList<List<Integer>>();
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[i].length;j++){
+                if(matrix[i][j] == 0){
+                    int row = i;
+                    int column = j;
+                    List<Integer> zero = new ArrayList();
+                    zero.add(row);
+                    zero.add(column);
+                    zeroIndices.add(zero);
+                }
+            }
+        }
+        for(int i=0;i<zeroIndices.size();i++){
+            matrix = fillMatrixZeros(matrix,zeroIndices.get(i).get(0),zeroIndices.get(i).get(1));
+        }
+    }
+    static int[][] fillMatrixZeros(int[][] matrix,int row,int column){
+        for(int i=0;i<matrix[0].length;i++){
+            System.out.println(row+" "+i);
+            matrix[row][i] = 0;
+        }
+        for(int j=0;j<matrix.length;j++){
+            System.out.println(j+" "+column);
+            matrix[j][column] = 0;
+        }
+        return matrix;
+    }
+}

@@ -1,0 +1,19 @@
+Brute force:
+Python:
+maxVal = 0
+for i in range(len(prices)):
+	for j in range(i,len(prices)):
+		if prices[j]>prices[i]:
+			maxPro = max(maxPro,prices[j]-prices[i])
+return maxPro
+TC: O(N^2)
+
+Optimal Approach:
+Python:
+maxVal = 0
+minVal = float('inf')
+for i in range(len(prices)):
+	minVal = min(minVal,prices[i])
+	maxPro = max(maxPro,prices[i]-minVal)
+return maxPro
+TC:O(N)
